@@ -5,7 +5,7 @@
 
 import BETRS
 
-def run():
+def main():
 	write_fugacity_file()
 
 def write_fugacity_file(chemical_name = 'PCB-153',
@@ -55,6 +55,7 @@ def write_fugacity_file(chemical_name = 'PCB-153',
 
 ######################################################
 
-run()
+if __name__ == "__main__":
+	main()
 
 ######################################################
