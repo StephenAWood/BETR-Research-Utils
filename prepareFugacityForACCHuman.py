@@ -1,13 +1,17 @@
 # This file uses results from BETR-Research v1.0 (Python implementation) to acquire fugacities
 # for various regions and output them to a file that ACC-HUMAN can accept for input.
+# You should have the folder for BETR-Research added to your python path
 
 import BETRS
 
+def run():
+	write_fugacity_file()
 
 def write_fugacity_file():
 
-	chemical_name = "PCB-153"
-	filename_path = '../Output/default/pcb153 run/dyn_out.cpk'
+	chemical_name = "PCB-153" # Modify as needed
+	filename_path = '../Output/default/pcb153 run/dyn_out.cpk' # Modify as needed
+	time_step = '0730' # In Hours
 
 	# Using BETR-Research v1.0
 
@@ -28,35 +32,24 @@ def write_fugacity_file():
 
 	# 	Open File for Output
 	#	Because ACC-Human is windows based, I must use the \r\n for End Of Line (EOL)
-	fugacity_file = open(chemicalName + '.txt', 'w+')
+	with open('f' + chemical_name + '.txt', 'w+') as fugacity_file:
 
-	#	Write first 3 lines
-	fugacity_file.write('0730\r\n')
-	fugacity_file.write('1930\r\n')
-	fugacity_file.write('2100')
+		#	Write first 3 lines
+		fugacity_file.write(time_step + '\r\n')
+		fugacity_file.write('1930\r\n')
+		fugacity_file.write('2100')
 
-	# Loop through Fugacities and write to file
-	for f1, f2, f3, f4, f5 in zip(air, seawater, soil, freshwater, groundwater):
-		fugacity_file.write('\r\n')
-		fugacity_file.write(' ')
-		fugacity_file.write('{:.3E}'.format(float(f1)))
-
-		fugacity_file.write(' ')
-		fugacity_file.write('{:.3E}'.format(float(f2)))
-
-		fugacity_file.write(' ')
-		fugacity_file.write('{:.3E}'.format(float(f3)))
-
-		fugacity_file.write(' ')
-		fugacity_file.write('{:.3E}'.format(float(f4)))
-
-		fugacity_file.write(' ')
-		fugacity_file.write('{:.3E}'.format(float(f5)))
-
-	fugacity_file.close()
+		# Loop through fugacities and write to file
+		for f1, f2, f3, f4, f5 in zip(air, seawater, soil, freshwater, groundwater):
+			fugacity_file.write('\r\n')
+			fugacity_file.write(' {:.3E}'.format(float(f1)))
+			fugacity_file.write(' {:.3E}'.format(float(f2)))
+			fugacity_file.write(' {:.3E}'.format(float(f3)))
+			fugacity_file.write(' {:.3E}'.format(float(f4)))
+			fugacity_file.write(' {:.3E}'.format(float(f5)))
 
 ######################################################
 
-write_fugacity_file()
+run()
 
 ######################################################
