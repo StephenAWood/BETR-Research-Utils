@@ -9,11 +9,10 @@ def run():
 	write_fugacity_file()
 
 def write_fugacity_file(chemical_name = 'PCB-153',
-	filename_path = '../Output/default/pcb153 run/dyn_out.cpk',
-	time_step = '0730',
-	grid_cells = [77, 75, 77, 77]
-	): # Modify these parameters as needed. Will write interactive file to control this one.
-
+						filename_path = '../Output/default/pcb153 run/dyn_out.cpk',
+						time_step = '0730',
+						grid_cells = [77, 75, 77, 77]): # Modify these parameters as needed. Will write interactive file to control this one.
+	
 	# Using BETR-Research v1.0
 
 	results = BETRS.load(filename_path) # Load the results
