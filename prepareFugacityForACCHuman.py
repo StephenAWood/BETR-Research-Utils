@@ -1,6 +1,7 @@
 # This file uses results from BETR-Research v1.0 (Python implementation) to acquire fugacities
 # for various regions and output them to a file that ACC-HUMAN can accept for input.
 # You should have the folder for BETR-Research added to your Python path
+#
 
 import BETRS
 
