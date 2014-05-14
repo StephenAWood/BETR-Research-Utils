@@ -1,6 +1,6 @@
 # This file uses results from BETR-Research v1.0 (Python implementation) to acquire fugacities
 # for various regions and output them to a file that ACC-HUMAN can accept for input.
-# You should have the folder for BETR-Research added to your python path
+# You should have the folder for BETR-Research added to your Python path
 
 import BETRS
 
@@ -15,7 +15,7 @@ def write_fugacity_file():
 
 	# Using BETR-Research v1.0
 
-	results = BETRS.load(filename_path)
+	results = BETRS.load(filename_path) # Load the results
 
 	# Retrieve fugacities from relevant environmental media
 	# Format:
@@ -36,8 +36,8 @@ def write_fugacity_file():
 
 		#	Write first 3 lines
 		fugacity_file.write(time_step + '\r\n')
-		fugacity_file.write('1930\r\n')
-		fugacity_file.write('2100')
+		fugacity_file.write('1930\r\n') # Start year for ACC-Human
+		fugacity_file.write('2100') 	# End year for ACC-Human
 
 		# Loop through fugacities and write to file
 		for f1, f2, f3, f4, f5 in zip(air, seawater, soil, freshwater, groundwater):
